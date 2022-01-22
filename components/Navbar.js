@@ -1,13 +1,14 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { UserContext } from "../lib/context";
 
 export default function navbar({}) {
-  const user = true;
-  const username = true;
+  const { user, username } = useContext(UserContext);
 
   return (
     <nav className="navbar">
       <ul>
-        <li className="push-left">
+        <li>
           <Link href="/">
             <button className="btn-logo">FEED</button>
           </Link>
@@ -17,11 +18,14 @@ export default function navbar({}) {
         {username && (
           <>
             <li className="push-left">
+              <button>Sign Out</button>
+            </li>
+            <li>
               <Link href="/admin">
                 <button className="btn-blue">Write Posts</button>
               </Link>
             </li>
-            <li className="push-left">
+            <li>
               <Link href={`/${username}`}>
                 <img src={user?.photoURL} />
               </Link>

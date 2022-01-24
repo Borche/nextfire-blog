@@ -7,19 +7,7 @@ import { UserContext } from "../lib/context";
 export default function EnterPage({}) {
   const { user, username } = useContext(UserContext);
 
-  return (
-    <main>
-      {user ? (
-        !username ? (
-          <UsernameForm />
-        ) : (
-          <SignOutButton />
-        )
-      ) : (
-        <SignInButton />
-      )}
-    </main>
-  );
+  return <main>{user ? !username ? <UsernameForm /> : <SignOutButton /> : <SignInButton />}</main>;
 }
 
 function SignInButton() {
@@ -110,17 +98,8 @@ function UsernameForm() {
       <section>
         <h3>Choose Username</h3>
         <form onSubmit={onSubmit}>
-          <input
-            name="username"
-            placeholder="myname"
-            value={formValue}
-            onChange={onChange}
-          />
-          <UsernameMessage
-            username={formValue}
-            isValid={isValid}
-            loading={loading}
-          />
+          <input name="username" placeholder="myname" value={formValue} onChange={onChange} />
+          <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
           <button type="submit" className="btn-green" disabled={!isValid}>
             Choose
           </button>

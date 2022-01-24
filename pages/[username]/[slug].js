@@ -5,7 +5,6 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 
 export async function getStaticProps({ params }) {
   const { username, slug } = params;
-  console.log(`Params: `, params);
   const userDoc = await getUserWithUsername(username);
 
   let post;
@@ -13,9 +12,6 @@ export async function getStaticProps({ params }) {
 
   if (userDoc) {
     const postRef = userDoc.ref.collection("posts").doc(slug);
-    console.log("########");
-    console.log(`Slug: ${slug}`);
-    console.log("########");
     post = postToJSON(await postRef.get());
 
     path = postRef.path;

@@ -1,8 +1,8 @@
-import styles from "../../styles/Post.module.css";
-import PostContent from "../../components/PostContent";
-import AuthCheck from "../../components/AuthCheck";
-import HeartButton from "../../components/HeartButton";
-import { UserContext } from "../../lib/context";
+import styles from "@styles/Post.module.css";
+import PostContent from "@components/PostContent";
+import AuthCheck from "@components/AuthCheck";
+import HeartButton from "@components/HeartButton";
+import { UserContext } from "@lib/context";
 
 import Link from "next/link";
 
